@@ -1,0 +1,14 @@
+{
+  "name": "temporary-staffing-monorepo",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev:client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "dev:server": "npm --prefix server run start:dev",
+    "build:server": "npm --prefix server run build"
+  }
+}

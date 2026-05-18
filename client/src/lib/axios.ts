@@ -1,7 +1,27 @@
 import axios from 'axios';
 
+const LOCAL_DEV_API_URL = 'http://localhost:3001/api';
+
+function normalizeApiBaseUrl(url: string) {
+  return url.trim().replace(/\/$/, '');
+}
+
+function resolveApiBaseUrl() {
+  const configuredApiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  if (configuredApiUrl) {
+    return normalizeApiBaseUrl(configuredApiUrl);
+  }
+
+  if (process.env.NODE_ENV === 'development') {
+    return LOCAL_DEV_API_URL;
+  }
+
+  return '/api';
+}
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api',
+  baseURL: resolveApiBaseUrl(),
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',

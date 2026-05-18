@@ -6,6 +6,7 @@ node_modules/
 .next/
 dist/
 build/
+.vercel/
 
 # Environment
 .env
@@ -30,3 +31,4 @@ server/prisma/migrations/*.sql
 
 # Testing
 coverage/
+.vercel
